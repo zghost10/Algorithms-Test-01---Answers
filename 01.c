@@ -4,15 +4,16 @@
 int main (){
 	//Allows to print UTF-8 characters such as "é, à, etc."
 	setlocale(LC_ALL, "");
-	int n, first, second;
+	int n, original, digit, reverse = 0;
 	printf("Digite um número de 6 algarismos: \n");
 	scanf("%d", &n);
-	if(n < 100000 || n > 999999){
-		printf("Esse número é inválido! O limite é 6 algarismos.\n");
+	original = n;
+	while(n != 0){
+		digit = n % 10;
+		reverse = reverse * 10 + digit;
+		n /= 10;
 	}
-	first = n/1000;
-	second = (n - (first*1000));
-	if((first-second) == 198 || (first-second) == -198){
+	if(original == reverse){
 		printf("Esse número é palíndromo!\n");
 	}else{
 		printf("Esse número não é palíndromo!\n");
